@@ -111,6 +111,14 @@ $dotenv = Dotenv\Dotenv::create(__DIR__, 'myconfig');
 $dotenv->load();
 ```
 
+Optionally, you can pass in an array of directories to search in. Only the first file found will be included.
+
+```php
+// Load .env from the current directory, if not found, load from the directory containing this file.
+$dotenv = Dotenv\Dotenv::create(array(getcwd(), __DIR__), 'myconfig');
+$dotenv->load();
+```
+
 All of the defined variables are now accessible with the `getenv`
 method, and are available in the `$_ENV` and `$_SERVER` super-globals.
 
